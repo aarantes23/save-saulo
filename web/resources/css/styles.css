@@ -1,0 +1,33 @@
+#header{    
+    border: 1px solid #052221;
+    background: whitesmoke;
+    font-family: 'Open Sans', sans-serif;    
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1%;            
+}
+
+#contents{    
+    border: 1px solid #052221;    
+    background: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+    position:  absolute;
+    right: 1%;
+    left: 280px;
+    height: 75%;
+    top: 80px;       
+    padding: 1%;
+}
+
+#footer{
+    border: 1px solid #052221;
+    background: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    width: 98%;
+    position: fixed;
+    bottom: 1%;    
+    right: 1%;
+    left: 1%;
+}
+
