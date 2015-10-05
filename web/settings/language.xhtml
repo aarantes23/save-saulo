@@ -9,9 +9,15 @@
         <ui:define name="contents">
             <p>#{msgs['language.choose']}</p>
             <h:form>                
-                <p:commandButton value="#{msgs['language.useng']}"  styleClass="ui-priority-primary"  action="#{controlerLocaleMB.englishLocale()}"/>
+                <p:commandButton value="#{msgs['language.useng']}"  
+                                 styleClass="ui-priority-primary"  
+                                 style="width:30%;height:100%"
+                                 action="#{controlerLocaleMB.englishLocale()}"/>
                 <br/><br/>
-                <p:commandButton value="#{msgs['language.ptbr']}" styleClass="ui-priority-primary"  action="#{controlerLocaleMB.portugueseLocale()}"/>                
+                <p:commandButton value="#{msgs['language.ptbr']}" 
+                                 styleClass="ui-priority-primary"  
+                                 style="width:30%;height:100%"
+                                 action="#{controlerLocaleMB.portugueseLocale()}"/>                
             </h:form>
         </ui:define>            
     </ui:composition>

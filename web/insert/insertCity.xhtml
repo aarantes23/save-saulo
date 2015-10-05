@@ -2,12 +2,78 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">    
     <ui:composition template="../templates/template.xhtml">
         <ui:define name="windowTitle">#{msgs['insert.city']}</ui:define>
         <ui:define name="contents">
-            #{msgs['insert.city']}
+            <p:outputLabel value="#{msgs['insert.city']}"  />            
+            <br/><br/>
+            <h:form>
+                <p:growl id="msgs" showDetail="true" />
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-3">
+                            <p:outputLabel id="out-field-1" value="Identification* :" style="font-weight: bold;"/> 
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p:outputLabel id="in-field-1" value="#{controlerCityMB.i}"
+                                         style="width:100%" rendered="#{controlerCityMB.status}"/>
+                            <p:outputLabel id="in-field-1-1" value="#{controlerCityMB.city.id}"
+                                         style="width:100%" rendered="#{!controlerCityMB.status}"/>
+                        </div>
+                        <div class="ui-grid-col-3"></div>
+                    </div> 
+                    <br/>
+                    
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-3">
+                            <p:outputLabel id="out-field-2" value="Name* :" style="font-weight: bold;"/> 
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p:inputText id="in-field-2" required="true" value="#{controlerCityMB.city.name}"
+                                         style="width:100%"
+                                         requiredMessage="Field 'Name' is required"/>
+                        </div>
+                        <div class="ui-grid-col-3"></div>
+                    </div> 
+
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-3">
+                            <p:outputLabel id="out-field-3" value="State* :" style="font-weight: bold;"/> 
+                        </div>
+                        <div class="ui-grid-col-6">
+                            <p:inputText id="in-field-3" required="true" value="#{controlerCityMB.city.state}"
+                                         style="width:100%"
+                                         requiredMessage="Field 'State' is required"/>
+                        </div>
+                        <div class="ui-grid-col-3"></div>
+                    </div> 
+
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-4"><br/></div>
+                        <div class="ui-grid-col-4"><br/></div>
+                        <div class="ui-grid-col-4"><br/></div>
+                    </div>  
+
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-4"></div>
+                        <div class="ui-grid-col-4">
+                            <p:commandButton value="Insert" icon="ui-icon-check"
+                                             style="width:70%"
+                                             action="#{controlerCityMB.insert()}"
+                                             rendered="#{controlerCityMB.status}"/>                    
+                            <p:commandButton value="Change" icon="ui-icon-check"
+                                             style="width:70%"
+                                             action="#{controlerCityMB.makeChange()}"
+                                             rendered="#{!controlerCityMB.status}"/>                    
+                        </div>
+                        <div class="ui-grid-col-4"></div>
+                    </div>                    
+
+                </div>
+            </h:form>
         </ui:define>            
     </ui:composition>
 </html>
-

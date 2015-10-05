@@ -1,0 +1,9 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Developed by Arthur Arantes Faria 
+${licensePrefix}Graduating in Computer Science on UNIFOR-MG BRASIL
+${licensePrefix}arthurarantes23@hotmail.com
+<#if licenseLast??>
+${licenseLast}
+</#if>

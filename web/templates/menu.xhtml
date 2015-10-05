@@ -10,10 +10,10 @@
                 <p:menuitem value="#{msgs['menu.home']}" icon="ui-icon-home" action="index" />                     
             </p:submenu>
             <p:submenu label="#{msgs['menu.insert']}" expanded="false">
-                <p:menuitem value="#{msgs['city']}" icon="ui-icon-image" action="insertyCity"/>
-                <p:menuitem value="#{msgs['phone']}" icon="ui-icon-bookmark" action="insertyPhone"/>
-                <p:menuitem value="#{msgs['commitment']}" icon="ui-icon-calendar" action="insertyCommitment"/>
-                <p:menuitem value="#{msgs['contact']}" icon="ui-icon-person" action="insertyContact"/>
+                <p:menuitem value="#{msgs['city']}" icon="ui-icon-image" action="#{controlerCityMB.newCity()}"/>
+                <p:menuitem value="#{msgs['phone']}" icon="ui-icon-bookmark" action="#{controlerPhoneMB.newPhone()}"/>
+                <p:menuitem value="#{msgs['commitment']}" icon="ui-icon-calendar" action="#{controlerCommitmentMB.newCommitment()}"/>
+                <p:menuitem value="#{msgs['contact']}" icon="ui-icon-person" action="#{controlerContactMB.newContact()}"/>
             </p:submenu>
             <p:submenu label="#{msgs['menu.view']}" expanded="false">
                 <p:menuitem value="#{msgs['city']}" icon="ui-icon-image" action="viewCity"/>

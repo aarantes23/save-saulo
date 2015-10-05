@@ -34,7 +34,7 @@
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
-            <from-outcome>insertyCity</from-outcome>
+            <from-outcome>insertCity</from-outcome>
             <to-view-id>/insert/insertCity.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
@@ -42,7 +42,7 @@
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
-            <from-outcome>insertyPhone</from-outcome>
+            <from-outcome>insertPhone</from-outcome>
             <to-view-id>/insert/insertPhone.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
@@ -50,16 +50,16 @@
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
-            <from-outcome>insertyCommitment</from-outcome>
-            <to-view-id>/insert/insertyCommitment.xhtml</to-view-id>
+            <from-outcome>insertCommitment</from-outcome>
+            <to-view-id>/insert/insertCommitment.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
-            <from-outcome>insertyContact</from-outcome>
-            <to-view-id>/insert/insertyContact.xhtml</to-view-id>
+            <from-outcome>insertContact</from-outcome>
+            <to-view-id>/insert/insertContact.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
