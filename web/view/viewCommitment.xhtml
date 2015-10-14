@@ -10,63 +10,65 @@
         <ui:define name="contents">
             <h:form>
                 <p:dataTable value="#{controlerCommitmentMB.list}" var="commitment"  >
-                    <f:facet name="header">List of Commitment</f:facet>
-                    <f:facet name="footer">Total of Commitment: #{controlerCommitmentMB.list.size()} </f:facet>
+                    <f:facet name="header">#{msgs['view.commitment.header']}</f:facet>
+                    <f:facet name="footer">#{msgs['view.commitment.footer']}#{controlerCommitmentMB.list.size()} </f:facet>
 
-                    <p:column headerText="Id">
+                    <p:column headerText="#{msgs['view.commitment.id']}">
                         <h:outputText value="#{commitment.id}" />
                     </p:column>
 
-                    <p:column headerText="Date Begin">
+                    <p:column headerText="#{msgs['view.commitment.dateBegin']}">
                         <h:outputText value="#{commitment.date_start}" />
                     </p:column>
 
-                    <p:column headerText="Hour Begin">
+                    <p:column headerText="#{msgs['view.commitment.hourBegin']}">
                         <h:outputText value="#{commitment.hour_start}" />
                     </p:column>
 
-                    <p:column headerText="Date End">
+                    <p:column headerText="#{msgs['view.commitment.dateEnd']}">
                         <h:outputText value="#{commitment.date_end}" />
                     </p:column>
 
-                    <p:column headerText="Hour End">
+                    <p:column headerText="#{msgs['view.commitment.hourEnd']}">
                         <h:outputText value="#{commitment.hour_end}" />
                     </p:column>
 
-                    <p:column headerText="Description">
+                    <p:column headerText="#{msgs['view.commitment.description']}">
                         <h:outputText value="#{commitment.description}" />
                     </p:column>
 
-                    <p:column headerText="Observation">
+                    <p:column headerText="#{msgs['view.commitment.observation']}">
                         <h:outputText value="#{commitment.observation}" />
                     </p:column>
 
-                    <p:column headerText="Contact id">
+                    <p:column headerText="#{msgs['view.commitment.contactId']}">
                         <h:outputText value="#{commitment.id_Contact}" />
                     </p:column>
 
-                    <p:column headerText="Status">
+                    <p:column headerText="#{msgs['view.commitment.status']}">
                         <h:outputText value="#{commitment.status}" />
                     </p:column>
 
-                    <p:column headerText="Delete">
-                        <p:commandButton value="Delete" action="#{controlerCommitmentMB.remove(commitment)}"
+                    <p:column headerText="#{msgs['delete']}">
+                        <p:commandButton value="#{msgs['delete']}" 
+                                         action="#{controlerCommitmentMB.remove(commitment)}"
                                          style="width:100%;height:100%"
-                                         onclick="if (!confirm('Confirm delete ?'))
+                                         onclick="if (!confirm(#{msgs['delete.confirm']}))
                                                      return false"/>
                     </p:column>
 
-                    <p:column headerText="Edit">
-                        <p:commandButton value="Edit" action="#{controlerCommitmentMB.change(commitment)}"
-                                         style="width:100%;height:100%"
-                                         />
+                    <p:column headerText="#{msgs['edit']}">
+                        <p:commandButton value="#{msgs['edit']}" 
+                                         action="#{controlerCommitmentMB.change(commitment)}"
+                                         style="width:100%;height:100%" />
                     </p:column>
                 </p:dataTable>
                 <br/><br/><br/>
                 <div class="ui-grid-row">
                     <div class="ui-grid-col-5"><br/></div>
                     <div class="ui-grid-col-3">
-                        <p:commandButton value="New Commitment" action="#{controlerCommitmentMB.newCommitment()}"/>
+                        <p:commandButton value="#{msgs['view.commitment.newCommitment']}" 
+                                         action="#{controlerCommitmentMB.newCommitment()}"/>
                     </div>
                     <div class="ui-grid-col-4"><br/></div>
                 </div>

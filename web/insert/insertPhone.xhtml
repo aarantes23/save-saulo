@@ -15,13 +15,19 @@
                 <div class="ui-grid ui-grid-responsive">
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-1" value="Identification* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-1" 
+                                           value="#{msgs['insert.phone.identification']}" 
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:outputLabel id="in-field-1" value="#{controlerPhoneMB.i}"
-                                           style="width:100%" rendered="#{controlerPhoneMB.status}"/>
-                            <p:outputLabel id="in-field-1-1" value="#{controlerPhoneMB.phone.id}"
-                                           style="width:100%" rendered="#{!controlerPhoneMB.status}"/>                                           
+                            <p:outputLabel id="in-field-1" 
+                                           value="#{controlerPhoneMB.i}"
+                                           style="width:100%" 
+                                           rendered="#{controlerPhoneMB.status}"/>
+                            <p:outputLabel id="in-field-1-1" 
+                                           value="#{controlerPhoneMB.phone.id}"
+                                           style="width:100%" 
+                                           rendered="#{!controlerPhoneMB.status}"/>                                           
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
@@ -29,14 +35,20 @@
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-2" value="Contact* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-2" 
+                                           value="#{msgs['insert.phone.contact']}"
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:selectOneMenu id="in-field-2" value="#{controlerPhoneMB.phone.id_Contact}"
+                            <p:selectOneMenu id="in-field-2" 
+                                             value="#{controlerPhoneMB.phone.id_Contact}"
                                              style="width:101%" >
-                                <f:selectItem itemValue="Select Contact name" noSelectionOption="true" />
-                                <f:selectItems  value="#{controlerContactMB.list}" var="contact" 
-                                                itemValue="#{contact.id}" itemLabel="#{contact.name}" />
+                                <f:selectItem itemValue="#{msgs['insert.phone.contact.select']}" 
+                                              noSelectionOption="true" />
+                                <f:selectItems  value="#{controlerContactMB.list}" 
+                                                var="contact" 
+                                                itemValue="#{contact.id}" 
+                                                itemLabel="#{contact.name}" />
                             </p:selectOneMenu> 
 
                         </div>
@@ -45,47 +57,61 @@
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-3" value="Phone number* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-3" 
+                                           value="#{msgs['insert.phone.phoneNumber']}"
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputMask id="in-field-3" required="true" value="#{controlerPhoneMB.phone.phone}"
-                                         mask="(99) 9999-9999" style="width:100%"
-                                         requiredMessage="Field 'Phone number' is required"/>
+                            <p:inputMask id="in-field-3" required="true" 
+                                         value="#{controlerPhoneMB.phone.phone}"
+                                         mask="(99) 9999-9999" 
+                                         style="width:100%"
+                                         requiredMessage="#{msgs['insert.phone.phoneNumber.required']}"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
                     <br/>
-                    
+
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-4" value="Phone type* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-4" 
+                                           value="#{msgs['insert.phone.phoneType']}"
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:selectOneButton  id="in-field-4" value="#{controlerPhoneMB.phone.phone_type}"
-                                                requiredMessage="Field 'Phone Type' is required">
-                                <f:selectItem itemLabel="Cell" itemValue="Cell" />
-                                <f:selectItem itemLabel="Home Phone" itemValue="Home Phone" />
-                                <f:selectItem itemLabel="Work Phone" itemValue="Work Phone" />
-                                <f:selectItem itemLabel="Others" itemValue="Others" />
+                            <p:selectOneButton id="in-field-4" 
+                                               value="#{controlerPhoneMB.phone.phone_type}"
+                                               requiredMessage="#{msgs['insert.phone.phoneType.required']}">
+                                <f:selectItem itemLabel="#{msgs['insert.phone.phoneType.cell']}"
+                                              itemValue="#{msgs['insert.phone.phoneType.cell']}"/>
+                                <f:selectItem itemLabel="#{msgs['insert.phone.phoneType.homePhone']}" 
+                                              itemValue="#{msgs['insert.phone.phoneType.homePhone']}" />
+                                <f:selectItem itemLabel="#{msgs['insert.phone.phoneType.workPhone']}"
+                                              itemValue="#{msgs['insert.phone.phoneType.workPhone']}"/>
+                                <f:selectItem itemLabel="#{msgs['insert.phone.phoneType.others']}"
+                                              itemValue="#{msgs['insert.phone.phoneType.others']}" />
                             </p:selectOneButton>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
 
-                    <!-- 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-5" value="Main phone* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-5" 
+                                           value="#{msgs['insert.phone.mainPhone']}"
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-5" required="true" value=""
-                                         style="width:100%"                                         
-                                         requiredMessage="Field 'Main Phone' is required"/>
+                            <p:inputSwitch id="in-field-5"
+                                           required="true"
+                                           onLabel="#{msgs['insert.phone.mainPhone.onLabel']}"
+                                           offLabel="#{msgs['insert.phone.mainPhone.offLabel']}"
+                                           value="#{controlerPhoneMB.phone.main}" 
+                                           style="width:10%"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
-                    
-                    -->
+
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-4"><br/></div>
                         <div class="ui-grid-col-4"><br/></div>
@@ -95,11 +121,13 @@
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-4"></div>
                         <div class="ui-grid-col-4">
-                            <p:commandButton value="Insert" icon="ui-icon-check"
+                            <p:commandButton value="#{msgs['insert']}" 
+                                             icon="ui-icon-check"
                                              style="width:70%"
                                              action="#{controlerPhoneMB.insert()}"
                                              rendered="#{controlerPhoneMB.status}"/>                    
-                            <p:commandButton value="Change" icon="ui-icon-check"
+                            <p:commandButton value="#{msgs['change']}" 
+                                             icon="ui-icon-check"
                                              style="width:70%"
                                              action="#{controlerPhoneMB.makeChange()}"
                                              rendered="#{!controlerPhoneMB.status}"/>                    

@@ -5,7 +5,7 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <application>
         <locale-config>
-            <default-locale>pt_BR</default-locale>                
+            <default-locale>en_US</default-locale>                
             <supported-locale>pt_BR</supported-locale>
             <supported-locale>en_US</supported-locale>            
         </locale-config>
@@ -102,8 +102,7 @@
             <to-view-id>/settings/language.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    
-    
+       
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>

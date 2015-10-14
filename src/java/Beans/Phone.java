@@ -15,18 +15,18 @@ public class Phone {
     private int id_Contact;
     private String phone;
     private String phone_type;
-    //private boolean main;
+    private boolean main;
 
     public Phone() {
     }
 
-    public Phone(int id, int id_Contact, String phone, String phone_type) {
+    public Phone(int id, int id_Contact, String phone, String phone_type, boolean main) {
         this.id = id;
         this.id_Contact = id_Contact;
         this.phone = phone;
         this.phone_type = phone_type;
-        //this.main = main;
-    }
+        this.main = main;
+    }   
 
     public int getId() {
         return id;
@@ -59,7 +59,7 @@ public class Phone {
     public void setPhone_type(String phone_type) {
         this.phone_type = phone_type;
     }
-/*
+
     public boolean getMain() {
         return main;
     }
@@ -67,5 +67,5 @@ public class Phone {
     public void setMain(boolean main) {
         this.main = main;
     }
-  */         
+
 }

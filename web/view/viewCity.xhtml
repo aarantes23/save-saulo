@@ -10,39 +10,41 @@
         <ui:define name="contents">
             <h:form>
                 <p:dataTable value="#{controlerCityMB.list}" var="city"  >
-                    <f:facet name="header">List of Cities</f:facet>
-                    <f:facet name="footer">Total of Cities: #{controlerCityMB.list.size()} </f:facet>
+                    <f:facet name="header">#{msgs['view.city.header']}</f:facet>
+                    <f:facet name="footer">#{msgs['view.city.footer']}#{controlerCityMB.list.size()} </f:facet>
 
-                    <p:column headerText="Id">
+                    <p:column headerText="#{msgs['view.city.id']}">
                         <h:outputText value="#{city.id}" />
                     </p:column>
 
-                    <p:column headerText="Name">
+                    <p:column headerText="#{msgs['view.city.name']}">
                         <h:outputText value="#{city.name}" />
                     </p:column>
 
-                    <p:column headerText="State">
+                    <p:column headerText="#{msgs['view.city.state']}">
                         <h:outputText value="#{city.state}" />
                     </p:column>
 
-                    <p:column headerText="Delete">
-                        <p:commandButton value="Delete" action="#{controlerCityMB.remove(city)}"
+                    <p:column headerText="#{msgs['delete']}">
+                        <p:commandButton value="#{msgs['delete']}" 
+                                         action="#{controlerCityMB.remove(city)}"
                                          style="width:100%;height:100%"
-                                         onclick="if (!confirm('Confirm delete ?'))
+                                         onclick="if (!confirm(#{msgs['delete.confirm']}))
                                                      return false"/>
                     </p:column>
 
-                    <p:column headerText="Edit">
-                        <p:commandButton value="Edit" action="#{controlerCityMB.change(city)}"
-                                         style="width:100%;height:100%"
-                                         />
+                    <p:column headerText="#{msgs['edit']}">
+                        <p:commandButton value="#{msgs['edit']}" 
+                                         action="#{controlerCityMB.change(city)}"
+                                         style="width:100%;height:100%" />
                     </p:column>
                 </p:dataTable>
                 <br/><br/><br/>
                 <div class="ui-grid-row">
                     <div class="ui-grid-col-5"><br/></div>
                     <div class="ui-grid-col-3">
-                        <p:commandButton value="New City" action="#{controlerCityMB.newCity()}"/>
+                        <p:commandButton value="#{msgs['view.city.newCity']}" 
+                                         action="#{controlerCityMB.newCity()}"/>
                     </div>
                     <div class="ui-grid-col-4"><br/></div>
                 </div>

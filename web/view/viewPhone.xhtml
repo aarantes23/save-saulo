@@ -10,34 +10,40 @@
         <ui:define name="contents">
             <h:form>
                 <p:dataTable value="#{controlerPhoneMB.list}" var="phone"  >
-                    <f:facet name="header">List of Phones</f:facet>
-                    <f:facet name="footer">Total of Phones: #{controlerPhoneMB.list.size()} </f:facet>
+                    <f:facet name="header">#{msgs['view.phone.header']}</f:facet>
+                    <f:facet name="footer">#{msgs['view.phone.footer']}#{controlerPhoneMB.list.size()} </f:facet>
 
-                    <p:column headerText="Id">
+                    <p:column headerText="#{msgs['view.phone.id']}">
                         <h:outputText value="#{phone.id}" />
                     </p:column>
 
-                    <p:column headerText="Contact">
+                    <p:column headerText="#{msgs['view.phone.contact']}">
                         <h:outputText value="#{phone.id_Contact}" />
                     </p:column>
 
-                    <p:column headerText="Phone Number">
+                    <p:column headerText="#{msgs['view.phone.phoneNumber']}">
                         <h:outputText value="#{phone.phone}" />
                     </p:column>
 
-                    <p:column headerText="Phone type">
+                    <p:column headerText="#{msgs['view.phone.phoneType']}">
                         <h:outputText value="#{phone.phone_type}" />
                     </p:column>
 
-                    <p:column headerText="Delete">
-                        <p:commandButton value="Delete" action="#{controlerPhoneMB.remove(phone)}"
+                    <p:column headerText="#{msgs['view.phone.mainPhone']}">
+                        <h:outputText value="#{phone.main}" />
+                    </p:column>
+
+                    <p:column headerText="#{msgs['delete']}">
+                        <p:commandButton value="#{msgs['delete']}" 
+                                         action="#{controlerPhoneMB.remove(phone)}"
                                          style="width:100%;height:100%"
-                                         onclick="if (!confirm('Confirm delete ?'))
+                                         onclick="if (!confirm(#{msgs['delete.confirm']}))
                                                      return false"/>
                     </p:column>
 
-                    <p:column headerText="Edit">
-                        <p:commandButton value="Edit" action="#{controlerPhoneMB.change(phone)}"
+                    <p:column headerText="#{msgs['edit']}">
+                        <p:commandButton value="#{msgs['edit']}" 
+                                         action="#{controlerPhoneMB.change(phone)}"
                                          style="width:100%;height:100%"
                                          />
                     </p:column>
@@ -46,7 +52,8 @@
                 <div class="ui-grid-row">
                     <div class="ui-grid-col-5"><br/></div>
                     <div class="ui-grid-col-3">
-                        <p:commandButton value="New Phone" action="#{controlerPhoneMB.newPhone()}"/>
+                        <p:commandButton value="#{msgs['view.phone.newPhone']}" 
+                                         action="#{controlerPhoneMB.newPhone()}"/>
                     </div>
                     <div class="ui-grid-col-4"><br/></div>
                 </div>

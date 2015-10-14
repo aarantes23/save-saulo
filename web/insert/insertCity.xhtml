@@ -15,7 +15,8 @@
                 <div class="ui-grid ui-grid-responsive">
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-1" value="Identification* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-1" value="#{msgs['insert.city.identification']}" 
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
                             <p:outputLabel id="in-field-1" value="#{controlerCityMB.i}"
@@ -29,24 +30,28 @@
                     
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-2" value="Name* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-2" value="#{msgs['insert.city.name']}" 
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-2" required="true" value="#{controlerCityMB.city.name}"
+                            <p:inputText id="in-field-2" required="true" 
+                                         value="#{controlerCityMB.city.name}"
                                          style="width:100%"
-                                         requiredMessage="Field 'Name' is required"/>
+                                         requiredMessage="#{msgs['insert.city.name.required']}"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-3" value="State* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-3" value="#{msgs['insert.city.state']}" 
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-3" required="true" value="#{controlerCityMB.city.state}"
+                            <p:inputText id="in-field-3" required="true" 
+                                         value="#{controlerCityMB.city.state}"
                                          style="width:100%"
-                                         requiredMessage="Field 'State' is required"/>
+                                         requiredMessage="#{msgs['insert.city.state.required']}"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
@@ -60,18 +65,18 @@
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-4"></div>
                         <div class="ui-grid-col-4">
-                            <p:commandButton value="Insert" icon="ui-icon-check"
+                            <p:commandButton value="#{msgs['insert']}" icon="ui-icon-check"
                                              style="width:70%"
                                              action="#{controlerCityMB.insert()}"
                                              rendered="#{controlerCityMB.status}"/>                    
-                            <p:commandButton value="Change" icon="ui-icon-check"
+                            <p:commandButton value="#{msgs['change']}" icon="ui-icon-check"
                                              style="width:70%"
                                              action="#{controlerCityMB.makeChange()}"
                                              rendered="#{!controlerCityMB.status}"/>                    
                         </div>
                         <div class="ui-grid-col-4"></div>
                     </div>                    
-
+                    
                 </div>
             </h:form>
         </ui:define>            

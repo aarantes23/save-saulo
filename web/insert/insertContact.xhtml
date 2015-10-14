@@ -15,78 +15,96 @@
                 <div class="ui-grid ui-grid-responsive">
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-1" value="Identification* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-1" 
+                                           value="#{msgs['insert.contact.identification']}" 
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:outputLabel id="in-field-1" value="#{controlerContactMB.i}"
-                                           style="width:100%" rendered="#{controlerContactMB.status}"/>
-                            <p:outputLabel id="in-field-1-1" value="#{controlerContactMB.contact.id}"
-                                           style="width:100%" rendered="#{!controlerContactMB.status}"/>          
+                            <p:outputLabel id="in-field-1" 
+                                           value="#{controlerContactMB.i}"
+                                           style="width:100%" 
+                                           rendered="#{controlerContactMB.status}"/>
+                            <p:outputLabel id="in-field-1-1" 
+                                           value="#{controlerContactMB.contact.id}"
+                                           style="width:100%" 
+                                           rendered="#{!controlerContactMB.status}"/>          
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
                     <br/>
-                    
+
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-2" value="Name* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-2" 
+                                           value="#{msgs['insert.contact.name']}" 
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-2" required="true" value="#{controlerContactMB.contact.name}"
+                            <p:inputText id="in-field-2" required="true" 
+                                         value="#{controlerContactMB.contact.name}"
                                          style="width:100%"
-                                         requiredMessage="Field 'Name' is required"/>
+                                         requiredMessage="#{msgs['insert.contact.name.required']}"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-3" value="Birth Date* :" style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-3" 
+                                           value="#{msgs['insert.contact.birthDate']}" 
+                                           style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:calendar id="in-field-3" value="#{controlerContactMB.contact.birth_date}" 
-                                        pattern="dd/MM/yyyy" effect="fold" 
+                            <p:calendar id="in-field-3" 
+                                        value="#{controlerContactMB.contact.birth_date}" 
+                                        pattern="dd/MM/yyyy" 
+                                        effect="fold" 
                                         style="width:100%" 
-                                        requiredMessage="Field 'Birth Day' is required"/>
+                                        requiredMessage="#{msgs['insert.contact.birthDate.required']}"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div>
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-4" value="Address, Street* :" 
+                            <p:outputLabel id="out-field-4" 
+                                           value="#{msgs['insert.contact.street']}" 
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-4" required="true" 
+                            <p:inputText id="in-field-4" 
+                                         required="true" 
                                          value="#{controlerContactMB.contact.address_street}"
                                          style="width:100%"
-                                         requiredMessage="Field 'Street' is required"/>
+                                         requiredMessage="#{msgs['insert.contact.street.required']}"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-5" value="Number* :" 
+                            <p:outputLabel id="out-field-5" 
+                                           value="#{msgs['insert.contact.number']}" 
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-5" required="true" 
+                            <p:inputText id="in-field-5" 
+                                         required="true" 
                                          value="#{controlerContactMB.contact.address_num}"
                                          style="width:100%"
-                                         requiredMessage="Field 'Number' is required"/>
+                                         requiredMessage="#{msgs['insert.contact.number.required']}"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-6" value="Complement* :" 
-                                           style="font-weight: bold;"/> 
+                            <p:outputLabel id="out-field-6" 
+                                           value="#{msgs['insert.contact.complement']}"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-6" required="false" 
+                            <p:inputText id="in-field-6" 
+                                         required="false" 
                                          value="#{controlerContactMB.contact.address_comp}"
                                          style="width:100%"/>
                         </div>
@@ -95,29 +113,36 @@
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-7" value="Neighborhood* :" 
+                            <p:outputLabel id="out-field-7" 
+                                           value="#{msgs['insert.contact.neighborhood']}" 
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-7" required="true" 
+                            <p:inputText id="in-field-7" 
+                                         required="true" 
                                          value="#{controlerContactMB.contact.address_neighborhood}"
                                          style="width:100%"
-                                         requiredMessage="Field 'Neighborhood' is required"/>
+                                         requiredMessage="#{msgs['insert.contact.neighborhood.required']}"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div> 
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-8" value="City* :" 
+                            <p:outputLabel id="out-field-8" 
+                                           value="#{msgs['insert.contact.city']}" 
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:selectOneMenu id="in-field-8" value="#{controlerContactMB.contact.id_City}"
+                            <p:selectOneMenu id="in-field-8" 
+                                             value="#{controlerContactMB.contact.id_City}"
                                              style="width:101%" >
-                                <f:selectItem itemValue="Select City name" noSelectionOption="true" />
-                                <f:selectItems  value="#{controlerCityMB.list}" var="city" 
-                                                itemValue="#{city.id}" itemLabel="#{city.name}" />
+                                <f:selectItem itemValue="#{msgs['insert.contact.city.select']}" 
+                                              noSelectionOption="true" />
+                                <f:selectItems  value="#{controlerCityMB.list}" 
+                                                var="city" 
+                                                itemValue="#{city.id}" 
+                                                itemLabel="#{city.name}" />
                             </p:selectOneMenu>                            
                         </div>
                         <div class="ui-grid-col-3">
@@ -126,30 +151,34 @@
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-9" value="Cep* :" 
+                            <p:outputLabel id="out-field-9" 
+                                           value="#{msgs['insert.contact.cep']}" 
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputMask id="in-field-9" required="true" 
+                            <p:inputMask id="in-field-9" 
+                                         required="true" 
                                          value="#{controlerContactMB.contact.cep}"
                                          mask="99999-999"
                                          style="width:100%"
-                                         requiredMessage="Field 'Cep' is required"/>
+                                         requiredMessage="#{msgs['insert.contact.cep.required']}"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
                     </div>
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-10" value="Email* :" 
+                            <p:outputLabel id="out-field-10" 
+                                           value="#{msgs['insert.contact.email']}" 
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-10" required="true" 
+                            <p:inputText id="in-field-10" 
+                                         required="true" 
                                          value="#{controlerContactMB.contact.email}"
                                          style="width:100%"
-                                         requiredMessage="Field 'Email' is required"
-                                         validatorMessage="Enter a valid email">
+                                         requiredMessage="#{msgs['insert.contact.email.required']}"
+                                         validatorMessage="#{msgs['insert.contact.email.validator']}">
                                 <f:validateRegex pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}"/>
                             </p:inputText>
                         </div>
@@ -165,11 +194,12 @@
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-4"></div>
                         <div class="ui-grid-col-4">
-                            <p:commandButton value="Insert" icon="ui-icon-check"
+                            <p:commandButton value="#{msgs['insert']}" 
+                                             icon="ui-icon-check"
                                              style="width:70%"
                                              action="#{controlerContactMB.insert()}"
                                              rendered="#{controlerContactMB.status}"/>                    
-                            <p:commandButton value="Change" icon="ui-icon-check"
+                            <p:commandButton value="#{msgs['change']}" icon="ui-icon-check"
                                              style="width:70%"
                                              action="#{controlerContactMB.makeChange()}"
                                              rendered="#{!controlerContactMB.status}"/>                    
@@ -182,4 +212,3 @@
         </ui:define>            
     </ui:composition>
 </html>
-

@@ -10,68 +10,70 @@
         <ui:define name="contents">
             <h:form>
                 <p:dataTable value="#{controlerContactMB.list}" var="contact"  >
-                    <f:facet name="header">List of Contacts</f:facet>
-                    <f:facet name="footer">Total of Contacts: #{controlerContactMB.list.size()} </f:facet>
+                    <f:facet name="header">#{msgs['view.contact.header']}</f:facet>
+                    <f:facet name="footer">#{msgs['view.contact.footer']}#{controlerContactMB.list.size()} </f:facet>
 
-                    <p:column headerText="Id">
+                    <p:column headerText="#{msgs['view.contact.id']}">
                         <h:outputText value="#{contact.id}" />
                     </p:column>
 
-                    <p:column headerText="Name">
+                    <p:column headerText="#{msgs['view.contact.name']}">
                         <h:outputText value="#{contact.name}" />
                     </p:column>
 
-                    <p:column headerText="Birt date">
+                    <p:column headerText="#{msgs['view.contact.birthDay']}">
                         <h:outputText value="#{contact.birth_date}" />
                     </p:column>
 
-                    <p:column headerText="Street">
+                    <p:column headerText="#{msgs['view.contact.street']}">
                         <h:outputText value="#{contact.address_street}" />
                     </p:column>
                     
-                    <p:column headerText="Number">
+                    <p:column headerText="#{msgs['view.contact.number']}">
                         <h:outputText value="#{contact.address_num}" />
                     </p:column>
                     
-                    <p:column headerText="Complement">
+                    <p:column headerText="#{msgs['view.contact.complement']}">
                         <h:outputText value="#{contact.address_comp}" />
                     </p:column>
                     
-                    <p:column headerText="Neighborhood">
+                    <p:column headerText="#{msgs['view.contact.neighborhood']}">
                         <h:outputText value="#{contact.address_neighborhood}" />
                     </p:column>
                     
-                    <p:column headerText="City id">
+                    <p:column headerText="#{msgs['view.contact.cityId']}">
                         <h:outputText value="#{contact.id_City}" />
                     </p:column>
                     
-                    <p:column headerText="Cep">
+                    <p:column headerText="#{msgs['view.contact.cep']}">
                         <h:outputText value="#{contact.cep}" />
                     </p:column>
                     
-                    <p:column headerText="Email">
+                    <p:column headerText="#{msgs['view.contact.email']}">
                         <h:outputText value="#{contact.email}" />
                     </p:column>
                     
                     
-                    <p:column headerText="Delete">
-                        <p:commandButton value="Delete" action="#{controlerContactMB.remove(contact)}"
+                    <p:column headerText="#{msgs['delete']}">
+                        <p:commandButton value="#{msgs['delete']}" 
+                                         action="#{controlerContactMB.remove(contact)}"
                                          style="width:100%;height:100%"
-                                         onclick="if (!confirm('Confirm delete ?'))
+                                         onclick="if (!confirm(#{msgs['delete.confirm']}))
                                                      return false"/>
                     </p:column>
 
-                    <p:column headerText="Edit">
-                        <p:commandButton value="Edit" action="#{controlerContactMB.change(contact)}"
-                                         style="width:100%;height:100%"
-                                         />
+                    <p:column headerText="#{msgs['edit']}">
+                        <p:commandButton value="#{msgs['edit']}" 
+                                         action="#{controlerContactMB.change(contact)}"
+                                         style="width:100%;height:100%" />
                     </p:column>
                 </p:dataTable>
                 <br/><br/><br/>
                 <div class="ui-grid-row">
                     <div class="ui-grid-col-5"><br/></div>
                     <div class="ui-grid-col-3">
-                        <p:commandButton value="New Contact" action="#{controlerContactMB.newContact()}"/>
+                        <p:commandButton value="#{msgs['view.contact.newContact']}" 
+                                         action="#{controlerContactMB.newContact()}"/>
                     </div>
                     <div class="ui-grid-col-4"><br/></div>
                 </div>
