@@ -41,7 +41,7 @@
                         </div>
                         <div class="ui-grid-col-6">
                             <p:selectOneMenu id="in-field-2" 
-                                             value="#{controlerPhoneMB.phone.id_Contact}"
+                                             value="#{controlerPhoneMB.id_Contact}"
                                              style="width:101%" >
                                 <f:selectItem itemValue="#{msgs['insert.phone.contact.select']}" 
                                               noSelectionOption="true" />
@@ -80,7 +80,7 @@
                         </div>
                         <div class="ui-grid-col-6">
                             <p:selectOneButton id="in-field-4" 
-                                               value="#{controlerPhoneMB.phone.phone_type}"
+                                               value="#{controlerPhoneMB.phone.phoneType}"
                                                requiredMessage="#{msgs['insert.phone.phoneType.required']}">
                                 <f:selectItem itemLabel="#{msgs['insert.phone.phoneType.cell']}"
                                               itemValue="#{msgs['insert.phone.phoneType.cell']}"/>
@@ -106,7 +106,7 @@
                                            required="true"
                                            onLabel="#{msgs['insert.phone.mainPhone.onLabel']}"
                                            offLabel="#{msgs['insert.phone.mainPhone.offLabel']}"
-                                           value="#{controlerPhoneMB.phone.main}" 
+                                           value="#{controlerPhoneMB.mainPhone}" 
                                            style="width:10%"/>
                         </div>
                         <div class="ui-grid-col-3"></div>

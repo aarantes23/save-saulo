@@ -25,7 +25,7 @@
                                            style="width:100%" 
                                            rendered="#{controlerContactMB.status}"/>
                             <p:outputLabel id="in-field-1-1" 
-                                           value="#{controlerContactMB.contact.id}"
+                                           value="Undefined"
                                            style="width:100%" 
                                            rendered="#{!controlerContactMB.status}"/>          
                         </div>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="ui-grid-col-6">
                             <p:calendar id="in-field-3" 
-                                        value="#{controlerContactMB.contact.birth_date}" 
+                                        value="#{controlerContactMB.contact.birthDate}" 
                                         pattern="dd/MM/yyyy" 
                                         effect="fold" 
                                         style="width:100%" 
@@ -74,7 +74,7 @@
                         <div class="ui-grid-col-6">
                             <p:inputText id="in-field-4" 
                                          required="true" 
-                                         value="#{controlerContactMB.contact.address_street}"
+                                         value="#{controlerContactMB.contact.addressStreet}"
                                          style="width:100%"
                                          requiredMessage="#{msgs['insert.contact.street.required']}"/>
                         </div>
@@ -90,7 +90,7 @@
                         <div class="ui-grid-col-6">
                             <p:inputText id="in-field-5" 
                                          required="true" 
-                                         value="#{controlerContactMB.contact.address_num}"
+                                         value="#{controlerContactMB.contact.addressNum}"
                                          style="width:100%"
                                          requiredMessage="#{msgs['insert.contact.number.required']}"/>
                         </div>
@@ -105,7 +105,7 @@
                         <div class="ui-grid-col-6">
                             <p:inputText id="in-field-6" 
                                          required="false" 
-                                         value="#{controlerContactMB.contact.address_comp}"
+                                         value="#{controlerContactMB.contact.addressComp}"
                                          style="width:100%"/>
                         </div>
                         <div class="ui-grid-col-3"></div>
@@ -120,7 +120,7 @@
                         <div class="ui-grid-col-6">
                             <p:inputText id="in-field-7" 
                                          required="true" 
-                                         value="#{controlerContactMB.contact.address_neighborhood}"
+                                         value="#{controlerContactMB.contact.addressNeighborhood}"
                                          style="width:100%"
                                          requiredMessage="#{msgs['insert.contact.neighborhood.required']}"/>
                         </div>
@@ -135,14 +135,15 @@
                         </div>
                         <div class="ui-grid-col-6">
                             <p:selectOneMenu id="in-field-8" 
-                                             value="#{controlerContactMB.contact.id_City}"
+                                             value="#{controlerContactMB.idCity}"
                                              style="width:101%" >
                                 <f:selectItem itemValue="#{msgs['insert.contact.city.select']}" 
-                                              noSelectionOption="true" />
+                                              noSelectionOption="true" itemDisabled="true"/>
                                 <f:selectItems  value="#{controlerCityMB.list}" 
                                                 var="city" 
                                                 itemValue="#{city.id}" 
-                                                itemLabel="#{city.name}" />
+                                                itemLabel="#{city.name}"
+                                                />                                
                             </p:selectOneMenu>                            
                         </div>
                         <div class="ui-grid-col-3">

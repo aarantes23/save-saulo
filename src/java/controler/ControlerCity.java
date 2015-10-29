@@ -5,12 +5,13 @@
  */
 package controler;
 
-import Beans.City;
+import dao.CityDao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import model.City;
 
 /**
  *
@@ -24,31 +25,46 @@ public class ControlerCity implements Serializable {
     private City city;
     private Boolean status; // If Status = true then the city is new, else the user is editing
     private int i;
+    private final CityDao cityDao;
 
     /**
      * Creates a new instance of ControlerCity
      */
     public ControlerCity() {
-        i = 0;
-        list = new ArrayList();
         status = true;
-    }
-
-    public String remove(City city) {
-        list.remove(city);
-        return "viewCity?faces-redirect=true";
+        cityDao = new CityDao();
+        list = new ArrayList();
+        list = cityDao.list();
+        i = cityDao.list().size() + 1;
     }
 
     public String newCity() {
         city = new City();
+        i = cityDao.list().size() + 1;
         status = true;
         return "insertCity";
     }
 
+    public String remove(City city) {
+        if (cityDao.delete(city)) {
+            list = cityDao.list();
+            util.UtilMensagens.success("Success");
+            return "viewCity?faces-redirect=true";
+        } else {
+            util.UtilMensagens.erro("Erro");
+            return null;
+        }
+    }
+
     public String insert() {
-        city.setId(i++);
-        list.add(city);
-        return "viewCity";
+        if (cityDao.insert(city)) {
+            list = cityDao.list();
+            util.UtilMensagens.success("Success");
+            return "viewCity";
+        } else {
+            util.UtilMensagens.erro("Erro");
+            return null;
+        }
     }
 
     public String change(City city) {
@@ -58,10 +74,14 @@ public class ControlerCity implements Serializable {
     }
 
     public String makeChange() {
-        if (list.contains(this)) {
-            list.add(city.getId(), city);
+        if (cityDao.change(city)) {
+            list = cityDao.list();
+            util.UtilMensagens.success("Success");
+            return "viewCity";
+        } else {
+            util.UtilMensagens.erro("Erro");
+            return null;
         }
-        return "viewCity";
     }
 
     public List<City> getList() {
@@ -95,5 +115,5 @@ public class ControlerCity implements Serializable {
     public void setI(int i) {
         this.i = i;
     }
-        
+
 }

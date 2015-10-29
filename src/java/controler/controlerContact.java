@@ -5,12 +5,15 @@
  */
 package controler;
 
-import Beans.Contact;
+import dao.CityDao;
+import dao.ContactDao;
+import model.Contact;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import model.City;
 
 /**
  *
@@ -18,25 +21,25 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "controlerContactMB")
 @SessionScoped
-public class controlerContact implements Serializable {
+public class ControlerContact implements Serializable {
 
     private List<Contact> list;
     private Contact contact;
     private Boolean status; // If Status = true then the contact is new, else the user is editing
     private int i;
+    private final ContactDao contactDao;
+    private int idCity;
+    private City city;
 
     /**
      * Creates a new instance of controlerContact
      */
-    public controlerContact() {
-        i = 0;
-        list = new ArrayList();
+    public ControlerContact() {
         status = true;
-    }
-
-    public String remove(Contact contact) {
-        list.remove(contact);
-        return "viewContact?faces-redirect=true";
+        contactDao = new ContactDao();
+        list = new ArrayList();
+        list = contactDao.list();
+        i = 0;
     }
 
     public String newContact() {
@@ -45,24 +48,52 @@ public class controlerContact implements Serializable {
         return "insertContact";
     }
 
+    public String remove(Contact contact) {
+        if (contactDao.delete(contact)) {
+            list = contactDao.list();
+            util.UtilMensagens.success("Sucess");
+            return "viewContact?faces-redirect=true";
+        } else {
+            util.UtilMensagens.erro("Erro");
+            return null;
+        }
+    }
+
+    private void defineCity() {
+        CityDao cityDao = new CityDao();
+        city = cityDao.search(idCity);
+        contact.setIdCity(city);
+    }
+
     public String insert() {
-        contact.setId(i++);
-        list.add(contact);
-        return "viewContact";
+        defineCity();
+        if (contactDao.insert(contact)) {
+            list = contactDao.list();
+            util.UtilMensagens.success("Sucess");
+            return "viewContact";
+        } else {
+            util.UtilMensagens.erro("Erro");
+            return null;
+        }
     }
 
     public String change(Contact contact) {
         this.contact = contact;
-        contact.setBirth_date(null);// Clear the calendars
+        contact.setBirthDate(null);// Clear the calendars
         status = false;
         return "insertContact";
     }
 
     public String makeChange() {
-        if (list.contains(this)) {            
-            list.add(contact.getId(), contact);
+        defineCity();
+        if (contactDao.change(contact)) {
+            list = contactDao.list();
+            util.UtilMensagens.success("Sucess");
+            return "viewContact";
+        } else {
+            util.UtilMensagens.erro("Erro");
+            return null;
         }
-        return "viewContact";
     }
 
     public List<Contact> getList() {
@@ -96,5 +127,13 @@ public class controlerContact implements Serializable {
     public void setI(int i) {
         this.i = i;
     }
-   
+
+    public int getIdCity() {
+        return idCity;
+    }
+
+    public void setIdCity(int idCity) {
+        this.idCity = idCity;
+    }
+
 }

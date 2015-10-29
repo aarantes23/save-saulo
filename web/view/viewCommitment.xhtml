@@ -18,19 +18,19 @@
                     </p:column>
 
                     <p:column headerText="#{msgs['view.commitment.dateBegin']}">
-                        <h:outputText value="#{commitment.date_start}" />
+                        <h:outputText value="#{commitment.dateStart}" />
                     </p:column>
 
                     <p:column headerText="#{msgs['view.commitment.hourBegin']}">
-                        <h:outputText value="#{commitment.hour_start}" />
+                        <h:outputText value="#{commitment.hourStart}" />
                     </p:column>
 
                     <p:column headerText="#{msgs['view.commitment.dateEnd']}">
-                        <h:outputText value="#{commitment.date_end}" />
+                        <h:outputText value="#{commitment.dateEnd}" />
                     </p:column>
 
                     <p:column headerText="#{msgs['view.commitment.hourEnd']}">
-                        <h:outputText value="#{commitment.hour_end}" />
+                        <h:outputText value="#{commitment.hourEnd}" />
                     </p:column>
 
                     <p:column headerText="#{msgs['view.commitment.description']}">
@@ -42,7 +42,7 @@
                     </p:column>
 
                     <p:column headerText="#{msgs['view.commitment.contactId']}">
-                        <h:outputText value="#{commitment.id_Contact}" />
+                        <h:outputText value="#{commitment.contactid.name}" />
                     </p:column>
 
                     <p:column headerText="#{msgs['view.commitment.status']}">
@@ -53,12 +53,14 @@
                         <p:commandButton value="#{msgs['delete']}" 
                                          action="#{controlerCommitmentMB.remove(commitment)}"
                                          style="width:100%;height:100%"
+                                         icon="ui-icon-trash"
                                          onclick="if (!confirm(#{msgs['delete.confirm']}))
                                                      return false"/>
                     </p:column>
 
                     <p:column headerText="#{msgs['edit']}">
                         <p:commandButton value="#{msgs['edit']}" 
+                                         icon="ui-icon-pencil"
                                          action="#{controlerCommitmentMB.change(commitment)}"
                                          style="width:100%;height:100%" />
                     </p:column>

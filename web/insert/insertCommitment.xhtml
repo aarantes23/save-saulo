@@ -41,8 +41,9 @@
                         </div>
                         <div class="ui-grid-col-6">
                             <p:calendar id="in-field-2" 
-                                        value="#{controlerCommitmentMB.commitment.date_start}" 
-                                        pattern="dd/MM/yyyy" effect="fold" 
+                                        value="#{controlerCommitmentMB.commitment.dateStart}" 
+                                        pattern="dd/MM/yyyy" 
+                                        effect="fold" 
                                         style="width:100%"
                                         requiredMessage="#{msgs['insert.commitment.dateBegin.required']}"/>
                         </div>
@@ -52,14 +53,17 @@
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-3" value="#{msgs['insert.commitment.hourBegin']}" 
+                            <p:outputLabel id="out-field-3" 
+                                           value="#{msgs['insert.commitment.hourBegin']}" 
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
                             <p:calendar id="in-field-3" 
-                                        value="#{controlerCommitmentMB.commitment.hour_start}" 
-                                        pattern="HH:mm" timeOnly="true" 
-                                        style="width:100%" effect="fold"
+                                        value="#{controlerCommitmentMB.commitment.hourStart}" 
+                                        pattern="HH:mm" 
+                                        timeOnly="true" 
+                                        style="width:100%" 
+                                        effect="fold"
                                         requiredMessage="#{msgs['insert.commitment.hourBegin.required']}"/>                            
                         </div>
                         <div class="ui-grid-col-3"></div>
@@ -67,13 +71,15 @@
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-4" value="#{msgs['insert.commitment.dateEnd']}" 
+                            <p:outputLabel id="out-field-4" 
+                                           value="#{msgs['insert.commitment.dateEnd']}" 
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
                             <p:calendar id="in-field-4" 
-                                        value="#{controlerCommitmentMB.commitment.date_end}" 
-                                        pattern="dd/MM/yyyy" effect="fold" 
+                                        value="#{controlerCommitmentMB.commitment.dateEnd}" 
+                                        pattern="dd/MM/yyyy" 
+                                        effect="fold" 
                                         style="width:100%"
                                         requiredMessage="#{msgs['insert.commitment.dateEnd.required']}"/>
                         </div>
@@ -82,14 +88,17 @@
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-5" value="#{msgs['insert.commitment.hourEnd']}" 
+                            <p:outputLabel id="out-field-5" 
+                                           value="#{msgs['insert.commitment.hourEnd']}" 
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
                             <p:calendar id="in-field-5" 
-                                        value="#{controlerCommitmentMB.commitment.hour_end}" 
-                                        pattern="HH:mm" timeOnly="true" 
-                                        style="width:100%" effect="fold"
+                                        value="#{controlerCommitmentMB.commitment.hourEnd}" 
+                                        pattern="HH:mm" 
+                                        timeOnly="true" 
+                                        style="width:100%" 
+                                        effect="fold"
                                         requiredMessage="#{msgs['insert.commitment.hourEnd.required']}"/>                                    
                         </div>
                         <div class="ui-grid-col-3"></div>
@@ -102,7 +111,8 @@
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-6" required="true" 
+                            <p:inputText id="in-field-6" 
+                                         required="true" 
                                          value="#{controlerCommitmentMB.commitment.description}"
                                          style="width:100%"
                                          requiredMessage="#{msgs['insert.commitment.description.required']}"/>
@@ -117,7 +127,8 @@
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
-                            <p:inputText id="in-field-7" required="true" 
+                            <p:inputText id="in-field-7" 
+                                         required="true" 
                                          value="#{controlerCommitmentMB.commitment.observation}"
                                          style="width:100%"
                                          requiredMessage="#{msgs['insert.commitment.observation.required']}"/>
@@ -127,12 +138,13 @@
 
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <p:outputLabel id="out-field-8" value="#{msgs['insert.commitment.contactName']}" 
+                            <p:outputLabel id="out-field-8" 
+                                           value="#{msgs['insert.commitment.contactName']}" 
                                            style="font-weight: bold;"/> 
                         </div>
                         <div class="ui-grid-col-6">
                             <p:selectOneMenu id="in-field-8" 
-                                             value="#{controlerCommitmentMB.commitment.id_Contact}"
+                                             value="#{controlerCommitmentMB.id_Contact}"
                                              style="width:101%" 
                                              required="true"
                                              requiredMessage="#{msgs['insert.commitment.required']}">
@@ -154,7 +166,9 @@
                         </div>
                         <div class="ui-grid-col-6">
                             <p:inputSwitch id="in-field-9"
-                                           value="#{controlerCommitmentMB.commitment.status}" 
+                                           onLabel="#{msgs['insert.commitment.status.on']}"
+                                           offLabel="#{msgs['insert.commitment.status.off']}"
+                                           value="#{controlerCommitmentMB.commitmentStatus}"                                           
                                            style="width:10%"/>                            
                         </div>
                         <div class="ui-grid-col-3"></div>

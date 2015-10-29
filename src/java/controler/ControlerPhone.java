@@ -5,14 +5,15 @@
  */
 package controler;
 
-import Beans.Phone;
+import model.Phone;
+import dao.ContactDao;
+import dao.PhoneDao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
+import model.Contact;
 
 /**
  *
@@ -26,19 +27,20 @@ public class ControlerPhone implements Serializable {
     private Phone phone;
     private Boolean status; // If Status = true then the city is new, else the user is editing
     private int i;
+    private final PhoneDao phoneDao;
+    private Boolean mainPhone;
+    private int id_Contact;
+    private Contact contact;
 
     /**
      * Creates a new instance of ControlerPhone
      */
     public ControlerPhone() {
-        i = 0;
-        list = new ArrayList();
         status = true;
-    }
-
-    public String remove(Phone phone) {
-        list.remove(phone);
-        return "viewPhone?faces-redirect=true";
+        phoneDao = new PhoneDao();
+        list = new ArrayList();
+        list = phoneDao.list();
+        i = 0;
     }
 
     public String newPhone() {
@@ -47,23 +49,40 @@ public class ControlerPhone implements Serializable {
         return "insertPhone";
     }
 
+    public String remove(Phone phone) {
+        if (phoneDao.delete(phone)) {
+            list = phoneDao.list();
+            util.UtilMensagens.success("Sucess");
+            return "viewPhone?faces-redirect=true";
+        } else {
+            util.UtilMensagens.erro("Erro");
+            return null;
+        }
+    }
+
+    private void defineContact() {
+        ContactDao contactDao = new ContactDao();
+        contact = contactDao.search(id_Contact);
+        phone.setContactid(contact);
+        if (mainPhone == true) {
+            phone.setMain("Yes");
+        } else {
+            phone.setMain("No");
+        }
+    }
+
     public String insert() {
-        phone.setId(i++);
+        defineContact();
         // Gambiarra always way comented!
-        // Check if there is a main fone on list
-        if (phone.getMain() == true) {
+        // Check if there is a main phone on list
+        if (phone.getMain().equals("Yes")) {
             for (int j = 0; j < list.size(); j++) {
-                if (list.get(j).getId_Contact() == phone.getId_Contact()) {
+                if (list.get(j).getContactid().getId() == phone.getContactid().getId()) {
                     if (list.get(j).getMain() == phone.getMain()) {
                         // Then, the user already have a "main" fone
                         phone.setPhone(null);
                         i = i - 1;
-                        FacesContext.getCurrentInstance().
-                                addMessage(null,
-                                        new FacesMessage(
-                                                FacesMessage.SEVERITY_INFO,
-                                                "User Already have a main phone",
-                                                "User Already have a main phone"));
+                        util.UtilMensagens.erro("User already have a main phone");
                         phone = new Phone();
                         return "insertPhone";  // Find a way to show a message to user                  
                     }
@@ -71,8 +90,14 @@ public class ControlerPhone implements Serializable {
             }
         }
         // Gambiarra`s end
-        list.add(phone);
-        return "viewPhone";
+        if (phoneDao.insert(phone)) {
+            list = phoneDao.list();
+            util.UtilMensagens.success("Sucess");
+            return "viewPhone";
+        } else {
+            util.UtilMensagens.erro("Erro");
+            return null;
+        }
     }
 
     public String change(Phone phone) {
@@ -82,10 +107,15 @@ public class ControlerPhone implements Serializable {
     }
 
     public String makeChange() {
-        if (list.contains(this)) {
-            list.add(phone.getId(), phone);
+        defineContact();
+        if (phoneDao.change(phone)) {
+            list = phoneDao.list();
+            util.UtilMensagens.success("Sucess");
+            return "viewPhone";
+        } else {
+            util.UtilMensagens.erro("Erro");
+            return null;
         }
-        return "viewPhone";
     }
 
     public List<Phone> getList() {
@@ -118,6 +148,30 @@ public class ControlerPhone implements Serializable {
 
     public void setI(int i) {
         this.i = i;
+    }
+
+    public int getId_Contact() {
+        return id_Contact;
+    }
+
+    public void setId_Contact(int id_Contact) {
+        this.id_Contact = id_Contact;
+    }
+
+    public Boolean getMainPhone() {
+        return mainPhone;
+    }
+
+    public void setMainPhone(Boolean mainPhone) {
+        this.mainPhone = mainPhone;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
 }
